@@ -7,10 +7,25 @@ module.exports = function() {
         loaders: ['html-loader']
     });
 
+    rules.push({
+        test: /\.svg$/,
+        loaders: [
+            {
+                loader: "babel-loader"
+            },
+            {
+                loader: "react-svg-loader",
+                options: {
+                    es5: true
+                }
+            }
+        ]
+    });
+
     // Add support for loading images.
     rules.push({
         // only include svg that doesn't have font in the path or file name by using negative lookahead
-        test: /(\.(png|jpe?g|gif|webp)$|^((?!font).)*\.svg$)/,
+        test: /\.(png|jpe?g|gif|webp)$/,
         loaders: [
             {
                 loader: 'file-loader',
