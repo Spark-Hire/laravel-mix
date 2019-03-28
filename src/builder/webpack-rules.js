@@ -11,7 +11,11 @@ module.exports = function() {
         test: /\.svg$/,
         loaders: [
             {
-                loader: "babel-loader"
+                loader: "babel-loader",
+                options: {
+                  presets: ['@babel/preset-env'],
+                  plugins: ['@babel/plugin-transform-arrow-functions']
+                }
             },
             {
                 loader: "react-svg-loader",
